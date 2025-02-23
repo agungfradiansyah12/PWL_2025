@@ -11,12 +11,12 @@ class PageController extends Controller
         return 'Selamat Datang di Halaman Utama';
     }
 
-    public function about()
+    public function aboutt()
     {
         return 'Selamat Datang di Halaman About';
     }
 
-    public function contact(){
-        return 'f';
+    public function articles($id){
+        return "Halaman artikel dengan ID $id";
     }
 }

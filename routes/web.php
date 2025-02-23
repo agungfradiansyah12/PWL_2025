@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,15 +27,14 @@ Route::get('/', function () {
 //     return 'Hello World';
 //     });
 
-    Route::get('/hello', [WelcomeController::class,'hello']);
 
 Route::get('/world', function () {
     return 'World';
     });
 
-Route::get('/', function () {
-    return 'Selamat Datang';
-});
+// Route::get('/', function () {
+//     return 'Selamat Datang';
+// });
 
 Route::get('/about', function () {
     return 'Agung Fradiansyah 2341720045';
@@ -44,9 +48,9 @@ Route::get('/posts/{post}/comments/{comment}', function($postId, $commentId) {
     return 'Pos ke-'.$postId." Komentar ke-: ".$commentId;
 });
 
-Route::get('/articles/{id}', function($id) {
-    return 'Halaman artikel dengan ID '.$id;
-});
+// Route::get('/articles/{id}', function($id) {
+//     return 'Halaman artikel dengan ID '.$id;
+// });
 
 // Route::get('/articles/{id}', function($id) {
 //     return 'Halaman Artikel dengan ID '.$id;
@@ -80,3 +84,23 @@ Route::get('/user/profile', function() {
 // });
 
 // Route::get(‘/hello’, [WelcomeController::class,’hello’]);
+
+//controller praktikum
+
+Route::get('/helloo', [WelcomeController::class,'hellooo']);
+
+// Route::get('/', [PageController::class,'index']);
+// Route::get('/aboutt', [PageController::class,'aboutt']);
+// Route::get('/articles/{id}', [PageController::class,'articles']);
+
+Route::get('/', [HomeController::class,'Home']);
+Route::get('/about', [AboutController::class,'about']);
+Route::get('/articles/{id}', [ArticleController::class,'articles']);
+
+Route::resource('photos', PhotoController::class);
+
+Route::get('/greeting', function () {
+    return view('blog.hello', ['name' => 'Agung']);
+});
+
+Route::get('/greeting', [WelcomeController::class,'greeting']);
